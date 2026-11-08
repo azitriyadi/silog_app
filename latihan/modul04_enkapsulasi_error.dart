@@ -1,7 +1,7 @@
 // File ini dibuat untuk mendemonstrasikan pelanggaran enkapsulasi (Langkah E.3)
 // Percobaan mengakses atribut privat _stok secara langsung dari luar library.
 
-import '../lib/model/gudang.dart';
+import 'package:silog_app/model/gudang.dart';
 
 void main() {
   final gudangBandung = Gudang(

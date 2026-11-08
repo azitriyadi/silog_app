@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
-import '../lib/model/barang.dart';
-import '../lib/model/gudang.dart';
-import '../lib/model/pengiriman.dart';
+import 'package:silog_app/model/barang.dart';
+import 'package:silog_app/model/gudang.dart';
+import 'package:silog_app/model/pengiriman.dart';
 
 void main() {
   final sepatu = Barang(

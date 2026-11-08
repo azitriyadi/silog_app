@@ -4,22 +4,43 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:silog_app/main.dart';
 
 void main() {
-  testWidgets('SiLogApp smoke test memverifikasi tampilan profil identitas',
+  testWidgets('Pengujian antarmuka dan navigasi Modul 6 SiLogApp',
       (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+    // 1. Memuat aplikasi SiLogApp
     await tester.pumpWidget(const SiLogApp());
+    await tester.pumpAndSettle();
 
-    // Verifikasi judul AppBar dan heading profil
-    expect(find.text('silog - Modul 1'), findsOneWidget);
-    expect(find.text('Identitas diri'), findsOneWidget);
-    expect(find.byIcon(Icons.local_shipping), findsOneWidget);
+    // 2. Verifikasi komponen AppBar dan TabBar
+    expect(find.text('Daftar Pengiriman'), findsOneWidget);
+    expect(find.widgetWithText(Tab, 'Semua'), findsOneWidget);
+    expect(find.widgetWithText(Tab, 'Dalam Perjalanan'), findsOneWidget);
+    expect(find.widgetWithText(Tab, 'Diterima'), findsOneWidget);
 
-    // Verifikasi rincian data identitas
-    expect(find.text('Nama'), findsOneWidget);
-    expect(find.text('Muhammad azi Triyadi'), findsOneWidget);
-    expect(find.text('NPM'), findsOneWidget);
-    expect(find.text('714240025'), findsOneWidget);
-    expect(find.text('Kelas'), findsOneWidget);
-    expect(find.text('2B - D4 - Teknik Informatika'), findsOneWidget);
+    // 3. Verifikasi Widget Ringkasan (Tugas Praktikum G.2)
+    expect(find.text('Total Pengiriman'), findsOneWidget);
+    expect(find.text('Total Nilai Barang'), findsOneWidget);
+    expect(find.text('3 Paket'), findsOneWidget);
+
+    // 4. Verifikasi Kartu Pengiriman
+    expect(find.text('SLG-2026-0001'), findsOneWidget);
+    expect(find.text('Sepatu Lari Pria x 10'), findsOneWidget);
+
+    // 5. Uji Navigasi ke Layar Detail Pengiriman (Navigator.push)
+    await tester.tap(find.text('SLG-2026-0001'));
+    await tester.pumpAndSettle();
+
+    // Verifikasi konten Layar Detail Pengiriman
+    expect(find.text('Informasi Pengiriman'), findsOneWidget);
+    expect(find.text('Rincian Barang'), findsOneWidget);
+    expect(find.text('Sepatu Lari Pria'), findsOneWidget);
+
+    // 6. Uji Navigasi Kembali ke Layar Daftar (Navigator.pop)
+    await tester.scrollUntilVisible(find.text('Kembali ke Daftar'), 100);
+    await tester.tap(find.text('Kembali ke Daftar'));
+    await tester.pumpAndSettle();
+
+    // Pastikan kembali ke Layar Daftar Pengiriman
+    expect(find.text('Daftar Pengiriman'), findsOneWidget);
+    expect(find.text('SLG-2026-0001'), findsOneWidget);
   });
 }
