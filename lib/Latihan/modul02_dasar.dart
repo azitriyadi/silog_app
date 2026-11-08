@@ -1,8 +1,8 @@
 void main() {
-  const double faktorVolumetrik = 600;
+  const double faktorVolumetrik = 6000;
   double beratAktual = 12.4; // kilogram
-  double panjang = 90, lebar = 60, tinggi = 50;
-  double beratVolumetrik = (panjang * lebar * tinggi) / faktorVolumetrik; // sentimeterdouble beratVolumetrik = (panjang * lebar * tinggi) / faktorVolumetrik;
+  double panjang = 90, lebar = 60, tinggi = 50; // sentimeter
+  double beratVolumetrik = (panjang * lebar * tinggi) / faktorVolumetrik;
   double beratTertagih = beratAktual > beratVolumetrik ? beratAktual : beratVolumetrik;
   String kategori;
   if (beratTertagih <= 5) {
