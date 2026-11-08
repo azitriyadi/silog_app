@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, avoid_relative_lib_imports, unnecessary_type_check
 
-import '../lib/layanan/layanan_pengiriman.dart';
-import '../lib/layanan/moda.dart';
+import 'package:silog_app/layanan/layanan_pengiriman.dart';
+import 'package:silog_app/layanan/moda.dart';
 
 void main() {
   print('========================================');

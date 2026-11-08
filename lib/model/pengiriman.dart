@@ -9,10 +9,12 @@ class Pengiriman {
   final Barang barang;
   final int jumlah;
   final Pelanggan? pelanggan;
+  final DateTime tanggalKirim;
   String _status;
 
   static const List<String> _urutanStatus = [
     'Draft',
+    'Menunggu Pickup',
     'Dalam Perjalanan',
     'Tiba di Kota Tujuan',
     'Diterima',
@@ -25,8 +27,10 @@ class Pengiriman {
     required this.barang,
     required this.jumlah,
     this.pelanggan,
+    DateTime? tanggalKirim,
     String status = 'Draft',
-  }) : _status = status;
+  })  : tanggalKirim = tanggalKirim ?? DateTime.now(),
+        _status = status;
 
   /// Konstruktor bernama untuk membuat pengiriman baru dengan status awal 'Draft'.
   Pengiriman.baru({
@@ -36,7 +40,9 @@ class Pengiriman {
     required this.barang,
     required this.jumlah,
     this.pelanggan,
-  }) : _status = 'Draft';
+    DateTime? tanggalKirim,
+  })  : tanggalKirim = tanggalKirim ?? DateTime.now(),
+        _status = 'Draft';
 
   String get status => _status;
 
